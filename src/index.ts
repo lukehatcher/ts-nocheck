@@ -1,36 +1,46 @@
-// at the end of the script, print out how many js, ts, jsx, tsx files were edited
 import fs from 'fs';
 import path from 'path';
 
 const folderPath = './src'; // take as arg
 
-const addNoCheckLine = async (filepath: string) => {
-  const lines = await fs.readFile(filepath, (err, file) => {
+// type Extension = '.ts' | '.tsx' | '.js' | '.jsx';
+const extensions: ReadonlyArray<string> = ['.ts', '.tsx', '.js', '.jsx'];
+
+const addNocheck = (filePath: string, fileLines: string[]) => {
+  // fileLines.unshift('// @ts-nocheck');
+  // fileLines.splice(0, 1);
+  console.log('hi');
+  fs.writeFile(filePath, fileLines.join('\n'), (err) => {
     if (err) console.error(err);
   });
-  lines.toString().split('\n').unshift('// @ts-nocheck');
-  fs.writeFileSync(filepath, lines.join('\n'));
 };
 
-const readfile = (filePath: string):  => new Promise((resolve, reject) => {
-  fs.readFile(filePath, (err, file) => {
-    if (err) reject(err);
-    resolve(file);
-  })
-})
+const getFileLinesAsync = (filePath: string): Promise<string[]> => {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filePath, 'utf8', (err, file) => {
+      if (err) reject(err);
+      // resolve promise with array of lines
+      resolve(file.toString().split('\n'));
+    });
+  });
+};
 
-export const dfs = (dir: string) => {
+export const dfs = async (dir: string) => {
   const filesInDir = fs.readdirSync(dir);
   // TODO: change to for-i loop (perf)
   for (const file of filesInDir) {
     const currPath = path.join(dir, file);
-    // const stat = fs.lstatSync(currPath); // not using to avoid memory allocation
-    if (fs.lstatSync(currPath).isDirectory()) {
+    const stat = fs.lstatSync(currPath);
+
+    if (stat.isDirectory()) {
       dfs(currPath);
     } else {
-      // add line to file
-      // console.log(currPath, '-> this is a real file');
-      addNoCheckLine(currPath);
+      // add no-check line to file
+      const { ext } = path.parse(currPath);
+      if (extensions.includes(ext)) {
+        const lines = await getFileLinesAsync(currPath);
+        addNocheck(currPath, lines);
+      }
     }
   }
 };

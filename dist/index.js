@@ -7,16 +7,19 @@ exports.dfs = void 0;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const folderPath = './src';
+const addNoCheckLine = (filepath) => {
+    const lines = fs_1.default.readFileSync(filepath).toString().split('\n');
+    console.log(lines);
+};
 const dfs = (dir) => {
     const filesInDir = fs_1.default.readdirSync(dir);
     for (const file of filesInDir) {
         const currPath = path_1.default.join(dir, file);
         if (fs_1.default.lstatSync(currPath).isDirectory()) {
-            console.log('this is a folder');
             (0, exports.dfs)(currPath);
         }
         else {
-            console.log(currPath, '-> this is a real file');
+            addNoCheckLine(currPath);
         }
     }
 };

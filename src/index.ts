@@ -3,13 +3,31 @@ import path from 'path';
 
 const folderPath = './src'; // take as arg
 
+// options
+const smartCheck = true;
+// const jsx = true;
+// const tsx = true;
+// const js = true;
+// const ts = true;
+// const noCheck = '@ts-nocheck';
+
 // type Extension = '.ts' | '.tsx' | '.js' | '.jsx';
 const extensions: ReadonlyArray<string> = ['.ts', '.tsx', '.js', '.jsx'];
 
 const addNocheck = (filePath: string, fileLines: string[]) => {
+  fileLines.splice(0, 1);
+  // smartCheck is on by default.
+  if (smartCheck) {
+    const firstLine = fileLines[0];
+    if (firstLine.trim().startsWith('//')) {
+      const commentContent = firstLine.substring(firstLine.indexOf('//') + 2);
+      if (commentContent.trim().split(' ')[0] === '@ts-nocheck') {
+        console.log('has a nocheck already');
+        return;
+      }
+    }
+  }
   // fileLines.unshift('// @ts-nocheck');
-  // fileLines.splice(0, 1);
-  console.log('hi');
   fs.writeFile(filePath, fileLines.join('\n'), (err) => {
     if (err) console.error(err);
   });

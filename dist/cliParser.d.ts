@@ -1,3 +1,4 @@
+export declare type FileExtensionKey = 'jsx' | 'js' | 'tsx' | 'ts';
 export interface IConfig {
     js: boolean;
     jsx: boolean;
@@ -5,5 +6,4 @@ export interface IConfig {
     tsx: boolean;
     path: string;
 }
-export declare type FileExtensionKey = 'jsx' | 'js' | 'tsx' | 'ts';
 export declare const cliParser: (args: string[]) => IConfig | null;

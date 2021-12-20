@@ -1,6 +1,4 @@
-/**
- * shape of the object that is returned by the cliparser.
- */
+export type FileExtensionKey = 'jsx' | 'js' | 'tsx' | 'ts';
 export interface IConfig {
   js: boolean;
   jsx: boolean;
@@ -9,9 +7,6 @@ export interface IConfig {
   path: string;
 }
 
-/**
- * Map cli flags to file extensions.
- */
 const cliConfigOptionsMap = new Map([
   ['--jsx-off', 'jsx'],
   ['--js-off', 'js'],
@@ -19,20 +14,12 @@ const cliConfigOptionsMap = new Map([
   ['--ts-off', 'ts'],
 ]);
 
-// type tbd = '--jsx-off' | '--js-off' | '--tsx-off' | '--ts-off';
-export type FileExtensionKey = 'jsx' | 'js' | 'tsx' | 'ts';
-
 export const cliParser = (args: string[]): IConfig | null => {
   if (!args.length) {
     console.error(`ERROR: no directory path provide.`);
   }
-  // TODO: add regex for path
-  if (!args[args.length - 1]) {
-    console.error(`ERROR: invalid directory path provided.`);
-  }
-  const seen = new Set<string>(); // make sure there's no repeats args
 
-  // What is going to be returned by this cli parser.
+  const seen = new Set<string>(); // make sure there's no repeats args
   const config: IConfig = {
     jsx: true,
     js: true,

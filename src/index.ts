@@ -2,13 +2,12 @@ import fs from 'fs';
 import path from 'path';
 import { cliParser, FileExtensionKey, IConfig } from './cliParser';
 
-// options
 const smartCheck = true;
 
 const addNocheck = (filePath: string, fileLines: string[]) => {
-  // fileLines.splice(0, 1);
+  // fileLines.splice(0, 1); // DEV
 
-  // smartCheck is on by default.
+  // smartCheck is on by default. Options coming in future release.
   if (smartCheck) {
     const firstLine = fileLines[0];
     if (firstLine.trim().startsWith('//')) {
@@ -44,7 +43,7 @@ const dfs = async (dir: string, config: IConfig) => {
     if (stat.isDirectory()) {
       dfs(currPath, config);
     } else {
-      // add no-check line to file iff specified in file
+      // Add no-check line to file iff specified in config.
       const { ext } = path.parse(currPath);
       if (config[ext.substring(1) as FileExtensionKey]) {
         const lines = await getFileLinesAsync(currPath);

@@ -1,12 +1,11 @@
 {
   "name": "ts-nocheck",
-  "version": "1.0.0",
+  "version": "0.0.8",
   "description": "Painlessly add `@ts-nocheck` to the files you need it in.",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "bin": "./dist/index.js",
   "scripts": {
-    "test": "wip",
     "build": "tsc",
-    "run": "node dist/index.js",
     "build:run": "tsc && node dist/index.js"
   },
   "repository": {
@@ -17,10 +16,11 @@
     "TypeScript",
     "JavaScript",
     "migration",
-    "TS",
-    "JS",
-    "Tsx",
-    "Jsx"
+    "ts",
+    "js",
+    "tsx",
+    "jsx",
+    "@ts-nocheck"
   ],
   "author": "Luke Hatcher",
   "license": "MIT",

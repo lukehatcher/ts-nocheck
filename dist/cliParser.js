@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cliParser = void 0;
@@ -10,9 +11,6 @@ const cliConfigOptionsMap = new Map([
 const cliParser = (args) => {
     if (!args.length) {
         console.error(`ERROR: no directory path provide.`);
-    }
-    if (!args[args.length - 1]) {
-        console.error(`ERROR: invalid directory path provided.`);
     }
     const seen = new Set();
     const config = {

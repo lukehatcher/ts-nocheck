@@ -1,21 +1,13 @@
 import fs from 'fs';
 import path from 'path';
-
-const folderPath = './src'; // take as arg
+import { cliParser, FileExtensionKey, IConfig } from './cliParser';
 
 // options
 const smartCheck = true;
-// const jsx = true;
-// const tsx = true;
-// const js = true;
-// const ts = true;
-// const noCheck = '@ts-nocheck';
-
-// type Extension = '.ts' | '.tsx' | '.js' | '.jsx';
-const extensions: ReadonlyArray<string> = ['.ts', '.tsx', '.js', '.jsx'];
 
 const addNocheck = (filePath: string, fileLines: string[]) => {
-  fileLines.splice(0, 1);
+  // fileLines.splice(0, 1);
+
   // smartCheck is on by default.
   if (smartCheck) {
     const firstLine = fileLines[0];
@@ -27,7 +19,7 @@ const addNocheck = (filePath: string, fileLines: string[]) => {
       }
     }
   }
-  // fileLines.unshift('// @ts-nocheck');
+  fileLines.unshift('// @ts-nocheck');
   fs.writeFile(filePath, fileLines.join('\n'), (err) => {
     if (err) console.error(err);
   });
@@ -43,19 +35,18 @@ const getFileLinesAsync = (filePath: string): Promise<string[]> => {
   });
 };
 
-export const dfs = async (dir: string) => {
+const dfs = async (dir: string, config: IConfig) => {
   const filesInDir = fs.readdirSync(dir);
-  // TODO: change to for-i loop (perf)
-  for (const file of filesInDir) {
-    const currPath = path.join(dir, file);
+  for (let i = 0; i < filesInDir.length; ++i) {
+    const currPath = path.join(dir, filesInDir[i]);
     const stat = fs.lstatSync(currPath);
 
     if (stat.isDirectory()) {
-      dfs(currPath);
+      dfs(currPath, config);
     } else {
-      // add no-check line to file
+      // add no-check line to file iff specified in file
       const { ext } = path.parse(currPath);
-      if (extensions.includes(ext)) {
+      if (config[ext.substring(1) as FileExtensionKey]) {
         const lines = await getFileLinesAsync(currPath);
         addNocheck(currPath, lines);
       }
@@ -63,4 +54,8 @@ export const dfs = async (dir: string) => {
   }
 };
 
-dfs(folderPath);
+const cliArgs = process.argv.slice(2);
+const config = cliParser(cliArgs);
+if (config) {
+  dfs(config.path, config);
+}

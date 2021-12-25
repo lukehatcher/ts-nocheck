@@ -21,8 +21,7 @@ Options configuration:
   --jsx-off               Disable adding nocheck to js files
   --ts-off                Disable adding nocheck to ts files
   --tsx-off               Disable adding nocheck to tsx files
-
-  --smartCheck-off        (Coming soon)
+  --smartCheck-off        Add nocheck to all js, jsx, ts, tsx files even if it already has one
 ```
 
 ## Motivation

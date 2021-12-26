@@ -4,6 +4,7 @@ export interface IConfig {
     jsx: boolean;
     ts: boolean;
     tsx: boolean;
+    smartCheck: boolean;
     path: string;
 }
 export declare const cliParser: (args: string[]) => IConfig | null;

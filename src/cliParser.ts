@@ -4,6 +4,7 @@ export interface IConfig {
   jsx: boolean;
   ts: boolean;
   tsx: boolean;
+  smartCheck: boolean;
   path: string;
 }
 
@@ -12,6 +13,7 @@ const cliConfigOptionsMap = new Map([
   ['--js-off', 'js'],
   ['--tsx-off', 'tsx'],
   ['--ts-off', 'ts'],
+  ['--smart-check-off', 'smartCheck'],
 ]);
 
 export const cliParser = (args: string[]): IConfig | null => {
@@ -19,12 +21,13 @@ export const cliParser = (args: string[]): IConfig | null => {
     console.error(`ERROR: no directory path provide.`);
   }
 
-  const seen = new Set<string>(); // make sure there's no repeats args
+  const seen = new Set<string>(); // make sure there's no repeated args
   const config: IConfig = {
     jsx: true,
     js: true,
     tsx: true,
     ts: true,
+    smartCheck: true,
     path: args[args.length - 1],
   };
 

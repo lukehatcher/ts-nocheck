@@ -7,6 +7,7 @@ const cliConfigOptionsMap = new Map([
     ['--js-off', 'js'],
     ['--tsx-off', 'tsx'],
     ['--ts-off', 'ts'],
+    ['--smart-check-off', 'smartCheck'],
 ]);
 const cliParser = (args) => {
     if (!args.length) {
@@ -18,6 +19,7 @@ const cliParser = (args) => {
         js: true,
         tsx: true,
         ts: true,
+        smartCheck: true,
         path: args[args.length - 1],
     };
     for (let i = 0; i < args.length - 1; ++i) {

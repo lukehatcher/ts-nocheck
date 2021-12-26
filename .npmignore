@@ -4,8 +4,9 @@
 
 .prettierignore
 .prettierrc.json
-tsconfig.json
 .gitignore
+README.md
+TODO.txt
+tsconfig.json
 yarn.lock
 
-TODO.txt

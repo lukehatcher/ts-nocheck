@@ -1,6 +1,6 @@
 {
   "name": "ts-nocheck",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Painlessly add `@ts-nocheck` to the files you need it in.",
   "main": "./dist/index.js",
   "bin": "./dist/index.js",

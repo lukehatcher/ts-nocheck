@@ -2375,11 +2375,6 @@ ts-jest@^27.1.2:
     semver "7.x"
     yargs-parser "20.x"
 
-ts-nocheck@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/ts-nocheck/-/ts-nocheck-0.0.10.tgz#07a2ff161b036d6ab37f860f39d889b0d33efe8e"
-  integrity sha512-Uz/nH2GzBqg6SJNH057/iQz0VVQgh/Wr09w+lT6REOH7O06WXBoV6xeqtKhlRP9oOQIysIbiD6WWqwI3Cm+dwA==
-
 type-check@~0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/type-check/-/type-check-0.3.2.tgz#5884cab512cf1d355e3fb784f30804b2b520db72"

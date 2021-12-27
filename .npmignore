@@ -1,5 +1,5 @@
-github
-vscode
+.github
+.vscode
 coverage
 src
 
@@ -7,7 +7,6 @@ src
 .prettierignore
 .prettierrc.json
 jest.config.js
-README.md
 TODO.txt
 tsconfig.json
 yarn.lock

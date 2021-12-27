@@ -1,6 +1,6 @@
 {
   "name": "ts-nocheck",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Painlessly add `@ts-nocheck` to the files you need it in.",
   "main": "./dist/index.min.js",
   "bin": {
@@ -12,7 +12,6 @@
     "minimize": "uglifyjs ./dist/cliParser.js ./dist/fileHandler.js ./dist/index.js -o ./dist/index.min.js",
     "clean": "rm ./dist/cliParser.js && rm ./dist/fileHandler.js && rm ./dist/index.js",
     "prepublish": "node ./prepublish.js",
-    "publish": "yarn prepublish && npm publish",
     "build": "tsc && yarn minimize && yarn clean && yarn prepublish",
     "build:run": "tsc && node dist/index.js",
     "testx": "ts-nocheck ./src"

@@ -18,10 +18,10 @@ ts-nocheck [options] dir
 
 Options configuration:
   --js-off                Disable adding nocheck to js files
-  --jsx-off               Disable adding nocheck to js files
+  --jsx-off               Disable adding nocheck to jsx files
   --ts-off                Disable adding nocheck to ts files
   --tsx-off               Disable adding nocheck to tsx files
-  --smart-check-off        Add nocheck to all js, jsx, ts, tsx files even if it already has one
+  --smart-check-off       Add nocheck to all js, jsx, ts, tsx files even if it already has one
 ```
 
 ## Motivation

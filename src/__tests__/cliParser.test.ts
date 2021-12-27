@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { cliParser, IConfig } from '../cliParser';
 
 const dir = './src';

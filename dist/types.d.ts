@@ -8,3 +8,4 @@ export interface IConfig {
     path: string;
 }
 export declare const cliParser: (args: string[]) => IConfig | null;
+export declare const dfs: (dir: string, config: IConfig) => Promise<void>;

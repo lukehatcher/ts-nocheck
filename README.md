@@ -3,7 +3,7 @@
 
 ## Default behavior
 
-Prepends `// @ts-nocheck` to the top of all .js, .jsx, .ts and .tsx files in a given directory which do not already have one.
+Prepends `// @ts-nocheck` to the top of all .js, .jsx, .ts and .tsx files in a given directory. Will not add one if one already exists.
 
 ## Usage
 

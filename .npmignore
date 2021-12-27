@@ -1,10 +1,12 @@
+./github
 ./vscode
 ./coverage
 ./src
 
+.gitignore
 .prettierignore
 .prettierrc.json
-.gitignore
+jest.config.js
 README.md
 TODO.txt
 tsconfig.json

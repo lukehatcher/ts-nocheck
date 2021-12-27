@@ -2375,6 +2375,11 @@ ts-jest@^27.1.2:
     semver "7.x"
     yargs-parser "20.x"
 
+ts-nocheck@^0.0.10:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/ts-nocheck/-/ts-nocheck-0.0.10.tgz#07a2ff161b036d6ab37f860f39d889b0d33efe8e"
+  integrity sha512-Uz/nH2GzBqg6SJNH057/iQz0VVQgh/Wr09w+lT6REOH7O06WXBoV6xeqtKhlRP9oOQIysIbiD6WWqwI3Cm+dwA==
+
 type-check@~0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/type-check/-/type-check-0.3.2.tgz#5884cab512cf1d355e3fb784f30804b2b520db72"
@@ -2403,6 +2408,11 @@ typescript@^4.5.2:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.2.tgz#8ac1fba9f52256fdb06fb89e4122fa6a346c2998"
   integrity sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw==
+
+uglify-js@^3.14.5:
+  version "3.14.5"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.14.5.tgz#cdabb7d4954231d80cb4a927654c4655e51f4859"
+  integrity sha512-qZukoSxOG0urUTvjc2ERMTcAy+BiFh3weWAkeurLwjrCba73poHmG3E36XEjd/JGukMzwTL7uCxZiAexj8ppvQ==
 
 universalify@^0.1.2:
   version "0.1.2"

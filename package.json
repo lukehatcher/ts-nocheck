@@ -2,13 +2,20 @@
   "name": "ts-nocheck",
   "version": "0.0.10",
   "description": "Painlessly add `@ts-nocheck` to the files you need it in.",
-  "main": "./dist/index.js",
-  "bin": "./dist/index.js",
+  "main": "./dist/index.min.js",
+  "bin": {
+    "ts-nocheck": "./dist/index.min.js"
+  },
   "scripts": {
-    "test": "jest --coverage=true",
-    "build": "tsc",
+    "lint": "prettier --check ./src",
+    "test": "yarn lint && jest --coverage=true",
+    "minimize": "uglifyjs ./dist/cliParser.js ./dist/fileHandler.js ./dist/index.js -o ./dist/index.min.js",
+    "clean": "rm ./dist/cliParser.js && rm ./dist/fileHandler.js && rm ./dist/index.js",
+    "prepublish": "node ./prepublish.js",
+    "publish": "yarn prepublish | npm publish",
+    "build": "tsc && yarn minimize && yarn clean && yarn prepublish",
     "build:run": "tsc && node dist/index.js",
-    "do": "node ./dist/index.js"
+    "testx": "ts-nocheck ./src"
   },
   "repository": {
     "type": "git",
@@ -38,6 +45,8 @@
     "mock-fs": "^5.1.2",
     "prettier": "^2.5.1",
     "ts-jest": "^27.1.2",
-    "typescript": "^4.5.2"
+    "ts-nocheck": "^0.0.10",
+    "typescript": "^4.5.2",
+    "uglify-js": "^3.14.5"
   }
 }

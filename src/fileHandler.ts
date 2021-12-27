@@ -19,17 +19,6 @@ const addNocheck = (filePath: string, fileLines: string[], config: IConfig) => {
   fs.writeFileSync(filePath, fileLines.join('\n'));
 };
 
-// const getFileLinesAsync = (filePath: string): Promise<string[]> => {
-//   return new Promise((resolve, reject) => {
-//     fs.readFile(filePath, 'utf8', (err, file) => {
-//       if (err) reject(err);
-
-//       // resolve promise with array of lines
-//       resolve(file.toString().split('\n'));
-//     });
-//   });
-// };
-
 export const dfs = async (dir: string, config: IConfig): Promise<void> => {
   const filesInDir = fs.readdirSync(dir);
 
@@ -43,7 +32,7 @@ export const dfs = async (dir: string, config: IConfig): Promise<void> => {
       // Add no-check line to file iff extension is specified in config.
       const { ext } = path.parse(currPath);
       if (config[ext.substring(1) as FileExtensionKey]) {
-        // const lines = await getFileLinesAsync(currPath);
+        // Using sync version for unit testing. Trade off for perf.
         const lines = fs.readFileSync(currPath, 'utf8').toString().split('\n');
         addNocheck(currPath, lines, config);
       }

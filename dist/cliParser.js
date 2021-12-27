@@ -10,9 +10,6 @@ const cliConfigOptionsMap = new Map([
     ['--smart-check-off', 'smartCheck'],
 ]);
 const cliParser = (args) => {
-    if (!args.length) {
-        console.error(`ERROR: no directory path provide.`);
-    }
     const seen = new Set();
     const config = {
         jsx: true,

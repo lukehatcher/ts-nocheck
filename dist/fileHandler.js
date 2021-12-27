@@ -27,19 +27,7 @@ const addNocheck = (filePath, fileLines, config) => {
         }
     }
     fileLines.unshift('// @ts-nocheck');
-    fs_1.default.writeFile(filePath, fileLines.join('\n'), (err) => {
-        if (err)
-            console.error(err);
-    });
-};
-const getFileLinesAsync = (filePath) => {
-    return new Promise((resolve, reject) => {
-        fs_1.default.readFile(filePath, 'utf8', (err, file) => {
-            if (err)
-                reject(err);
-            resolve(file.toString().split('\n'));
-        });
-    });
+    fs_1.default.writeFileSync(filePath, fileLines.join('\n'));
 };
 const dfs = (dir, config) => __awaiter(void 0, void 0, void 0, function* () {
     const filesInDir = fs_1.default.readdirSync(dir);
@@ -52,7 +40,7 @@ const dfs = (dir, config) => __awaiter(void 0, void 0, void 0, function* () {
         else {
             const { ext } = path_1.default.parse(currPath);
             if (config[ext.substring(1)]) {
-                const lines = yield getFileLinesAsync(currPath);
+                const lines = fs_1.default.readFileSync(currPath, 'utf8').toString().split('\n');
                 addNocheck(currPath, lines, config);
             }
         }

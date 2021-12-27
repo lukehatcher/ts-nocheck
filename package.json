@@ -5,8 +5,10 @@
   "main": "./dist/index.js",
   "bin": "./dist/index.js",
   "scripts": {
+    "test": "jest --coverage=true",
     "build": "tsc",
-    "build:run": "tsc && node dist/index.js"
+    "build:run": "tsc && node dist/index.js",
+    "do": "node ./dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -29,8 +31,13 @@
   },
   "homepage": "https://github.com/lukehatcher/ts-nocheck#readme",
   "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@types/mock-fs": "^4.13.1",
     "@types/node": "^16.11.11",
+    "jest": "^27.4.5",
+    "mock-fs": "^5.1.2",
     "prettier": "^2.5.1",
+    "ts-jest": "^27.1.2",
     "typescript": "^4.5.2"
   }
 }

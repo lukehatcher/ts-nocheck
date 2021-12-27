@@ -1,6 +1,6 @@
 ./vscode
+./coverage
 ./src
-./__test__
 
 .prettierignore
 .prettierrc.json

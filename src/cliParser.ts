@@ -17,10 +17,6 @@ const cliConfigOptionsMap = new Map([
 ]);
 
 export const cliParser = (args: string[]): IConfig | null => {
-  if (!args.length) {
-    console.error(`ERROR: no directory path provide.`);
-  }
-
   const seen = new Set<string>(); // make sure there's no repeated args
   const config: IConfig = {
     jsx: true,
@@ -43,7 +39,7 @@ export const cliParser = (args: string[]): IConfig | null => {
     seen.add(args[i]);
 
     const key = cliConfigOptionsMap.get(args[i]);
-    config[key as FileExtensionKey] = false;
+    config[key as keyof Omit<IConfig, 'path'>] = false;
   }
   return config;
 };

@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cliParser = void 0;
@@ -10,9 +9,6 @@ const cliConfigOptionsMap = new Map([
     ['--smart-check-off', 'smartCheck'],
 ]);
 const cliParser = (args) => {
-    if (!args.length) {
-        console.error(`ERROR: no directory path provide.`);
-    }
     const seen = new Set();
     const config = {
         jsx: true,
